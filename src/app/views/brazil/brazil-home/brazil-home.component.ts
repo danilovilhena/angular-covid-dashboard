@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrazilHomeComponent implements OnInit {
 
+  currentTime;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.currentTime = new Date().toLocaleString()
   }
-
 }
