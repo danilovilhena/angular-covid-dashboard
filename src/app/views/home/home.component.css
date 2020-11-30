@@ -1,5 +1,5 @@
 #home-title{
-    color: #531CB3;
+    color: #0D3B66;
     font-size: 3.5rem;
     font-weight: bold;
 }
@@ -40,8 +40,8 @@
     font-size: 24px;
     font-weight: bold;
     box-shadow: 3px 3px 6px #00000029;
-    background-color: #531CB3;
-    border-color: #531CB3;
+    background-color: #0D3B66;
+    border-color: #0D3B66;
     border-radius: 10px;
     padding-right: 2.25%;
     padding-left: 2.25%;
@@ -50,10 +50,10 @@
     margin-bottom: 6%;
 }
 .btn:hover, .btn:active, .btn:focus, .btn-primary:not(:disabled):not(.disabled):active{
-    background-color: #F39237;
-    border-color: #F39237;
+    background-color: #DE3C4B;
+    border-color: #DE3C4B;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus{
-    box-shadow: 0 0 0 0.2rem rgba(243,146,55,.5);
+    box-shadow: 0 0 0 0.2rem rgba(222,60,75,.5);
 }

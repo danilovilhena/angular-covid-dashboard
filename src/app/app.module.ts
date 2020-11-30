@@ -5,12 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderBrazilComponent } from './components/header-brazil/header-brazil.component';
+import { HeaderWorldComponent } from './components/header-world/header-world.component';
+import { BrazilHomeComponent } from './views/brazil/brazil-home/brazil-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderBrazilComponent,
+    HeaderWorldComponent,
+    BrazilHomeComponent
   ],
   imports: [
     BrowserModule,
