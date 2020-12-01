@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderBrazilComponent } from './components/header-brazil/header-brazil.component';
 import { HeaderWorldComponent } from './components/header-world/header-world.component';
 import { BrazilHomeComponent } from './views/brazil/brazil-home/brazil-home.component';
+import { WorldHomeComponent } from './views/world/world-home/world-home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BrazilHomeComponent } from './views/brazil/brazil-home/brazil-home.comp
     FooterComponent,
     HeaderBrazilComponent,
     HeaderWorldComponent,
-    BrazilHomeComponent
+    BrazilHomeComponent,
+    WorldHomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+<app-header-world></app-header-world>
+<section id="overview" class="box mt-3">
+    <h2>Resumo</h2>
+    <p>Atualizado em: {{ currentTime }}</p>
+    <div id="overview-cards">
+        <div class="overview-card box">
+            <h3>Casos confirmados</h3>
+            <p>{{overview.casos}}</p>
+        </div>
+        <div class="overview-card box">
+            <h3>Casos recuperados</h3>
+            <p>{{overview.recuperados}}</p>
+        </div>
+        <div class="overview-card box">
+            <h3>Óbitos confirmados</h3>
+            <p>{{overview.mortes}}</p>
+        </div>
+    </div>
+</section>
