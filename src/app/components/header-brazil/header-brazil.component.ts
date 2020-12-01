@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header-brazil',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderBrazilComponent implements OnInit {
 
-  constructor() { }
+  currentUrl: boolean;
+  constructor(private location: Location) { }
 
   ngOnInit(): void {
+    this.currentUrl = document.location.href.endsWith('brazil')
+  }
+
+  return() {
+    this.location.back();
   }
 
 }
