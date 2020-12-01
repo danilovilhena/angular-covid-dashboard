@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { OrderModule } from 'ngx-order-pipe';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderBrazilComponent } from './components/header-brazil/header-brazil.component';
 import { HeaderWorldComponent } from './components/header-world/header-world.component';
 import { BrazilHomeComponent } from './views/brazil/brazil-home/brazil-home.component';
+import { BrazilStatesComponent } from './views/brazil/brazil-states/brazil-states.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { BrazilHomeComponent } from './views/brazil/brazil-home/brazil-home.comp
     FooterComponent,
     HeaderBrazilComponent,
     HeaderWorldComponent,
-    BrazilHomeComponent
+    BrazilHomeComponent,
+    BrazilStatesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

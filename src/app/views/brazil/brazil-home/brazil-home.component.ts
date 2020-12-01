@@ -1,3 +1,4 @@
+import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -52,19 +53,18 @@ export class BrazilHomeComponent implements OnInit {
 
         // Overview
         let brazil = rows[0].split(',')
-        this.overview['casos'] = this.numberWithCommas(brazil[2])
-        this.overview['mortes'] = this.numberWithCommas(brazil[5])
-        this.overview['recuperados'] = this.numberWithCommas(brazil[11])
+        this.overview['casos'] = +brazil[2]
+        this.overview['mortes'] = +brazil[5]
+        this.overview['recuperados'] = +brazil[11]
         rows.shift()
 
         // States
         rows.forEach(row => {
           let current = row.split(",")
           let state = current[1]
-          this.states[state]['casos'] = this.numberWithCommas(current[2])
-          this.states[state]['mortes'] = this.numberWithCommas(current[5])
-          this.states[state]['recuperados'] = this.numberWithCommas(current[11])
-          this.states[state]['recuperados'] = this.numberWithCommas(current[11])
+          this.states[state]['casos'] = +current[2]
+          this.states[state]['mortes'] = +current[5]
+          this.states[state]['recuperados'] = +current[11]
         });
       });
 
@@ -82,8 +82,8 @@ export class BrazilHomeComponent implements OnInit {
           let object = {
             'nome': current[2].split("/")[0],
             'ibgeID': current[3],
-            'casos': this.numberWithCommas(current[7]),
-            'mortes': this.numberWithCommas(current[6])
+            'casos': +current[7],
+            'mortes': +current[6]
           }
           this.states[state].cidades.push(object)
         });
@@ -142,7 +142,24 @@ export class BrazilHomeComponent implements OnInit {
             })
           } catch (error) {}
         });
+        this.formatData()
       });
   }
 
+  formatData() {
+    // Format States
+    let tempArr = []
+    for (var [key, value] of Object.entries(this.states)) {
+      let tempObj = value;
+      tempObj['sigla'] = key;
+      tempArr.push(tempObj)
+    }
+    this.states = tempArr;
+    (this.states as Array<Object>).sort(function(a, b){return b['casos'] - a['casos']});
+
+    // Format Cities
+    for(let i = 0; i < (this.states as Array<Object>).length; i++){
+      this.states[i].cidades.sort(function(a, b){return b['casos'] - a['casos']});
+    }
+  }
 }
