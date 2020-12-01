@@ -17,3 +17,16 @@
         </div>
     </div>
 </section>
+
+<section id="states" class="mt-5 mb-5">
+    <h2>Estados</h2>
+    <div class="state-cards">
+        <div class="state-card box mt-4 mb-4 mr-5" *ngFor="let state of states | keyvalue">
+            <h3 class="text-center">{{state.value.nome}}</h3>
+            <p>Casos confirmados: <span>{{state.value.casos}}</span></p>
+            <p>Casos recuperados: <span>{{state.value.recuperados}}</span></p>
+            <p>Óbitos confirmados: <span>{{state.value.mortes}}</span></p>
+            <button routerLink="/world" class="btn align-self-end">Ver por cidade<img class="ml-2" src="assets/icons/next.svg" alt=""></button>
+        </div>
+    </div>
+</section>

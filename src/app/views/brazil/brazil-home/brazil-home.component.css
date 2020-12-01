@@ -13,7 +13,7 @@ h2{
     font-weight: bold;
 }
 
-#overview{
+section{
     margin-right: 1%;
     margin-left: 1%;
 }
@@ -36,10 +36,10 @@ h2{
     width: 30%;
 }
 .overview-card:first-of-type{
-    background-color: #DE3C4B;
+    background-color: #15B097;
 }
 .overview-card:last-of-type{
-    background-color: #15B097;
+    background-color: #DE3C4B;
 }
 
 .overview-card h3{
@@ -52,4 +52,63 @@ h2{
     font-weight: bold;
     text-align: center;
     font-size: 3.75rem;
+}
+
+#states h2{
+    margin-left: 1.75%;
+}
+
+.state-cards{
+    margin-left: 1.75%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.state-card{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.state-card span {
+    color: #DE3C4B;
+}
+
+.state-card h3{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0D3B66;
+}
+
+.state-card p{
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+button{
+    height: 3rem;
+    border-radius: 10px;
+    padding-left: 2%;
+    padding-right: 2%;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 2px solid #0D3B66;
+    font-weight: bold;
+    color: white;
+    background-color: #0D3B66;
+    width: 50%;
+}
+
+.btn:hover, .btn:active, .btn:focus, .btn-primary:not(:disabled):not(.disabled):active{
+    background-color: #DE3C4B;
+    border-color: #DE3C4B;
+    color: white;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus{
+    box-shadow: 0 0 0 0.2rem rgba(222,60,75,.5);
+}
+
+.btn.focus, .btn:focus{
+    box-shadow: 0 0 0 0.2rem rgba(222,60,75,.5);
 }
