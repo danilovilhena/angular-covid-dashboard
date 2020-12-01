@@ -3,5 +3,8 @@
         <img src="assets/icons/covid.svg" alt="Ilustração de um vírus">
         <h1>Dashboard - Brasil</h1>
     </div>
-    <button routerLink="/world" class="btn">Ver os dados do mundo</button>
+    <div id="right-side">
+        <button *ngIf="!currentUrl" (click)="return()" class="btn btn-inverted">Voltar</button>
+        <button routerLink="/world" class="btn">Ver os dados do mundo</button>
+    </div>
 </header>

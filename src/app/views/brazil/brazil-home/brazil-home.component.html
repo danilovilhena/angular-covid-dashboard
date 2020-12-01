@@ -5,15 +5,28 @@
     <div id="overview-cards">
         <div class="overview-card box">
             <h3>Casos confirmados</h3>
-            <p>{{overview.casos}}</p>
+            <p>{{numberWithCommas(overview.casos)}}</p>
         </div>
         <div class="overview-card box">
             <h3>Casos recuperados</h3>
-            <p>{{overview.recuperados}}</p>
+            <p>{{numberWithCommas(overview.recuperados)}}</p>
         </div>
         <div class="overview-card box">
             <h3>Óbitos confirmados</h3>
-            <p>{{overview.mortes}}</p>
+            <p>{{numberWithCommas(overview.mortes)}}</p>
+        </div>
+    </div>
+</section>
+
+<section id="states" class="mt-5 mb-5">
+    <h2>Estados</h2>
+    <div class="state-cards">
+        <div class="state-card box mt-4 mb-4" *ngFor="let state of states">
+            <h3 class="text-center">{{state.nome}}</h3>
+            <p>Casos confirmados: <span>{{numberWithCommas(state.casos)}}</span></p>
+            <p>Casos recuperados: <span>{{numberWithCommas(state.recuperados)}}</span></p>
+            <p>Óbitos confirmados: <span>{{numberWithCommas(state.mortes)}}</span></p>
+            <button routerLink="/brazil/state" [state]="{ estado: state }" class="btn align-self-end">Ver por cidade<img class="ml-2" src="assets/icons/next.svg"></button>
         </div>
     </div>
 </section>
