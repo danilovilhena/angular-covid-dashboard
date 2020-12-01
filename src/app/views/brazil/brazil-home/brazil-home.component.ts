@@ -9,10 +9,14 @@ export class BrazilHomeComponent implements OnInit {
 
   // Site pra pegar a bandeira de cada estado:
   // https://devarthurribeiro.github.io/covid19-brazil-api/static/flags/{UF}.png
-  
+
   currentTime;
   states = {};
-  overview = {};
+  overview = {
+    'casos': 0,
+    'mortes': 0,
+    'recuperados': 0
+  };
 
   constructor() { }
 
