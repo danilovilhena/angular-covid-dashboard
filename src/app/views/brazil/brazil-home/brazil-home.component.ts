@@ -1,4 +1,3 @@
-import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,12 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrazilHomeComponent implements OnInit {
 
-  // Site pra pegar a bandeira de cada estado:
-  // https://devarthurribeiro.github.io/covid19-brazil-api/static/flags/{UF}.png
-
   loading = true;
   currentTime;
-  states = {};
+  states = [];
   overview = {
     'casos': 0,
     'mortes': 0,
@@ -23,9 +19,15 @@ export class BrazilHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.currentTime = new Date().toLocaleString()
+    this.currentTime = new Date().toLocaleDateString()
     this.initStates()
-    this.fetchData()
+    if(!localStorage.getItem('brazil') && !localStorage.getItem('brazil_overview')){
+      this.fetchData()
+    } else{
+      this.states = JSON.parse(localStorage.getItem('brazil'))
+      this.overview = JSON.parse(localStorage.getItem('brazil_overview'))
+      this.loading = false
+    }
   }
 
   numberWithCommas(number) {
@@ -37,9 +39,10 @@ export class BrazilHomeComponent implements OnInit {
     let nomes = ["Acre","Alagoas","Amazonas","Amapá","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Minas Gerais","Mato Grosso do Sul","Mato Grosso","Pará","Paraíba","Pernambuco","Piauí","Paraná","Rio de Janeiro","Rio Grande do Norte","Rondônia","Roraima","Rio Grande do Sul","Santa Catarina","Sergipe","São Paulo","Tocantins"]
 
     for (let i = 0; i < siglas.length; i++){
-      this.states[siglas[i]] = {}
-      this.states[siglas[i]].nome = nomes[i]
-      this.states[siglas[i]].cidades = []
+      this.states[i] = {}
+      this.states[i].nome = nomes[i]
+      this.states[i].sigla = siglas[i]
+      this.states[i].cidades = []
     }
   }
 
@@ -63,9 +66,9 @@ export class BrazilHomeComponent implements OnInit {
         rows.forEach(row => {
           let current = row.split(",")
           let state = current[1]
-          this.states[state]['casos'] = +current[2]
-          this.states[state]['mortes'] = +current[5]
-          this.states[state]['recuperados'] = +current[11]
+          this.states.find(obj => {return obj.sigla === state})['casos'] = +current[2]
+          this.states.find(obj => {return obj.sigla === state})['mortes'] = +current[5]
+          this.states.find(obj => {return obj.sigla === state})['recuperados'] = +current[11]
         });
       });
 
@@ -86,7 +89,7 @@ export class BrazilHomeComponent implements OnInit {
             'casos': +current[7],
             'mortes': +current[6]
           }
-          this.states[state].cidades.push(object)
+          this.states.find(obj => {return obj.sigla === state}).cidades.push(object)
         });
       });
 
@@ -102,7 +105,7 @@ export class BrazilHomeComponent implements OnInit {
           let current = row.split(",")
           let state = current[3]
           try {
-            this.states[state].cidades.forEach(cidade => {
+            this.states.find(obj => {return obj.sigla === state}).cidades.forEach(cidade => {
               if(cidade.ibgeID == current[5]){
                 if(cidade.primeiraSemana){
                   cidade.ultimaSemana = +current[0]
@@ -129,7 +132,7 @@ export class BrazilHomeComponent implements OnInit {
           let current = row.split(",")
           let state = current[1].toUpperCase().slice(1,-1);
           try {
-            this.states[state].cidades.forEach(cidade => {
+            this.states.find(obj => {return obj.sigla === state}).cidades.forEach(cidade => {
               if(cidade.nome.toLowerCase() == current[2].toLowerCase().slice(1,-1)){
                 cidade.ocupHospCli ? cidade.ocupHospCli += +current[5] : cidade.ocupHospCli = +current[5]
                 cidade.ocupHospUti ? cidade.ocupHospUti += +current[6] : cidade.ocupHospUti = +current[6]
@@ -144,24 +147,27 @@ export class BrazilHomeComponent implements OnInit {
           } catch (error) {}
         });
         this.formatData()
+      })
+      .then(() => {
+        this.stopLoading()
       });
   }
 
   formatData() {
-    // Format States
-    let tempArr = []
-    for (var [key, value] of Object.entries(this.states)) {
-      let tempObj = value;
-      tempObj['sigla'] = key;
-      tempArr.push(tempObj)
-    }
-    this.states = tempArr;
-    (this.states as Array<Object>).sort(function(a, b){return b['casos'] - a['casos']});
+    // Format states
+    this.states.sort(function(a, b){return b['casos'] - a['casos']});
 
-    // Format Cities
-    for(let i = 0; i < (this.states as Array<Object>).length; i++){
+    // Format cities
+    for(let i = 0; i < this.states.length; i++){
       this.states[i].cidades.sort(function(a, b){return b['casos'] - a['casos']});
     }
-    this.loading = false;
+  }
+
+  stopLoading(){
+    setTimeout(() => {
+      localStorage.setItem('brazil', JSON.stringify(this.states))
+      localStorage.setItem('brazil_overview', JSON.stringify(this.overview))
+      this.loading = false;
+    }, 3000);
   }
 }

@@ -1,6 +1,10 @@
 <app-header-brazil></app-header-brazil>
 <section class="mt-5 mb-5">
-    <h2>Cidades - {{state.nome}}</h2>
+    <div class="d-flex flex-row align-items-center">
+        <h2 class="mr-3 mb-0">Cidades - {{state.nome}}</h2>
+        <img src="https://devarthurribeiro.github.io/covid19-brazil-api/static/flags/{{state.sigla}}.png" alt="Bandeira do estado de {{state.nome}}" width="45" height="30">
+    </div>
+
     <div class="state-cards">
         <div class="state-card box mt-4 mb-4 mr-5" *ngFor="let cidade of state.cidades | keyvalue">
             <h3 class="text-center mb-3">{{numberWithCommas(cidade.value.nome)}}</h3>
