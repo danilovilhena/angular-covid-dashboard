@@ -11,6 +11,7 @@ export class BrazilHomeComponent implements OnInit {
   // Site pra pegar a bandeira de cada estado:
   // https://devarthurribeiro.github.io/covid19-brazil-api/static/flags/{UF}.png
 
+  loading = true;
   currentTime;
   states = {};
   overview = {
@@ -161,5 +162,6 @@ export class BrazilHomeComponent implements OnInit {
     for(let i = 0; i < (this.states as Array<Object>).length; i++){
       this.states[i].cidades.sort(function(a, b){return b['casos'] - a['casos']});
     }
+    this.loading = false;
   }
 }
