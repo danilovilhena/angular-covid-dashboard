@@ -10,6 +10,7 @@ import { HeaderBrazilComponent } from './components/header-brazil/header-brazil.
 import { HeaderWorldComponent } from './components/header-world/header-world.component';
 import { BrazilHomeComponent } from './views/brazil/brazil-home/brazil-home.component';
 import { BrazilStatesComponent } from './views/brazil/brazil-states/brazil-states.component';
+import { BrazilCityComponent } from './views/brazil/brazil-city/brazil-city.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BrazilStatesComponent } from './views/brazil/brazil-states/brazil-state
     HeaderBrazilComponent,
     HeaderWorldComponent,
     BrazilHomeComponent,
-    BrazilStatesComponent
+    BrazilStatesComponent,
+    BrazilCityComponent
   ],
   imports: [
     BrowserModule,

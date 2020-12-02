@@ -10,7 +10,7 @@
             <h3 class="text-center mb-3">{{numberWithCommas(cidade.value.nome)}}</h3>
             <p>Casos confirmados: <span>{{numberWithCommas(cidade.value.casos)}}</span></p>
             <p class="mb-3">Óbitos confirmados: <span>{{numberWithCommas(cidade.value.mortes)}}</span></p>
-            <button routerLink="/brazil/state" [state]="{ cidade: cidade.value}" class="btn align-self-end">Ver mais detalhes<img class="ml-2" src="assets/icons/next.svg"></button>
+            <button routerLink="/brazil/state/city" [state]="{ cidade: cidade }" class="btn align-self-end">Ver mais detalhes<img class="ml-2" src="assets/icons/next.svg"></button>
         </div>
     </div>
 </section>
