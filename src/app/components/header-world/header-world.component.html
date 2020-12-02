@@ -1,7 +1,10 @@
 <header>
-    <div id="left-side">
-        <img src="assets/icons/covid.svg" alt="Ilustração de um vírus">
-        <h1>Dashboard - Mundo</h1>
-    </div>
+  <div id="left-side">
+    <img src="assets/icons/covid.svg" alt="Ilustração de um vírus">
+    <h1>Dashboard - Mundo</h1>
+  </div>
+  <div id="right-side">
+    <button *ngIf="!currentUrl" (click)="return()" class="btn btn-inverted">Voltar</button>
     <button routerLink="/brazil" class="btn">Ver os dados do brasil</button>
+  </div>
 </header>

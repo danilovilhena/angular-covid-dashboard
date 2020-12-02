@@ -5,15 +5,27 @@
     <div id="overview-cards">
         <div class="overview-card box">
             <h3>Casos confirmados</h3>
-            <p>{{overview.casos}}</p>
+            <p>{{numberWithCommas(overview.casos)}}</p>
         </div>
         <div class="overview-card box">
             <h3>Casos recuperados</h3>
-            <p>{{overview.recuperados}}</p>
+            <p>{{numberWithCommas(overview.recuperados)}}</p>
         </div>
         <div class="overview-card box">
             <h3>Óbitos confirmados</h3>
-            <p>{{overview.mortes}}</p>
+            <p>{{numberWithCommas(overview.mortes)}}</p>
         </div>
     </div>
 </section>
+
+<section id="countries" class="mt-5 mb-5">
+  <h2>Países</h2>
+  <div class="country-cards">
+      <div class="country-card box mt-4 mb-4" *ngFor="let country of countries | keyvalue">
+          <h3 class="text-center">{{country.value.nome}}</h3>
+          <p>Casos confirmados: <span>{{numberWithCommas(country.value.casos)}}</span></p>
+          <p>Casos recuperados: <span>{{numberWithCommas(country.value.recuperados)}}</span></p>
+          <p>Óbitos confirmados: <span>{{numberWithCommas(country.value.mortes)}}</span></p>
+          <button routerLink="/world/country" [state]="{ pais: country.value }" [disabled]="country.value.cidades.length === 0" class="btn align-self-end">Ver por cidade<img class="ml-2" src="assets/icons/next.svg"></button>
+      </div>
+  </div>
