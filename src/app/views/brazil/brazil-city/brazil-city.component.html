@@ -1,0 +1,43 @@
+<app-header-brazil></app-header-brazil>
+
+<section id="overview" class="box mt-3">
+    <h2 class="mb-4">{{city.nome}}</h2>
+    <div class="d-flex justify-content-between flex-sm-column flex-lg-row">
+        <div id="left-div">
+            <div>
+                <h3>Casos confirmados:</h3>
+                <p>{{city.casos}}</p>
+            </div>
+            <div>
+                <h3>Casos recuperados:</h3>
+                <p>{{city.recuperados ? city.recuperados: "Dados não disponíveis"}}</p>
+            </div>
+            <div>
+                <h3>Óbitos confirmados:</h3>
+                <p>{{city.mortes}}</p>
+            </div>
+            <div>
+                <h3>Semanas desde o primeiro caso:</h3>
+                <p>{{city.totalSemanas ? city.totalSemanas : "Dados não disponíveis"}}</p>
+            </div>
+        </div>
+        <div id="right-div">
+            <div>
+                <h3>Ocupação média de leitos normais:</h3>
+                <p>{{ (city.ocupHospCli/city.ofertaHospCli < 1) ? ((city.ocupHospCli/city.ofertaHospCli) * 100).toFixed(1) + "%" : "Dados não disponíveis" }}</p>
+            </div>
+            <div>
+                <h3>Ocupação média de leitos de UTI:</h3>
+                <p>{{ (city.ocupHospUti/city.ofertaHospUti < 1) ? ((city.ocupHospUti/city.ofertaHospUti) * 100).toFixed(1) + "%" : "Dados não disponíveis" }}</p>
+            </div>
+            <div>
+                <h3>Ocupação média de leitos (destinados à COVID-19):</h3>
+                <p>{{ (city.ocupSRAGCli/city.ofertaSRAGCli < 1) ? ((city.ocupSRAGCli/city.ofertaSRAGCli) * 100).toFixed(1) + "%" : "Dados não disponíveis" }}</p>
+            </div>
+            <div>
+                <h3>Ocupação média de leitos de UTI (destinados à COVID-19):</h3>
+                <p>{{ (city.ocupSRAGUti/city.ofertaSRAGUti < 1) ? ((city.ocupSRAGUti/city.ofertaSRAGUti) * 100).toFixed(1) + "%" : "Dados não disponíveis" }}</p>
+            </div>
+        </div>
+    </div>
+</section>

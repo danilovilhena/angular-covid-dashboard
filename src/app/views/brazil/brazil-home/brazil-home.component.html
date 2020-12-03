@@ -1,32 +1,46 @@
 <app-header-brazil></app-header-brazil>
-<section id="overview" class="box mt-3">
-    <h2>Resumo</h2>
-    <p>Atualizado em: {{ currentTime }}</p>
-    <div id="overview-cards">
-        <div class="overview-card box">
-            <h3>Casos confirmados</h3>
-            <p>{{numberWithCommas(overview.casos)}}</p>
+<div *ngIf="!loading">
+    <section id="overview" class="box mt-3">
+        <h2>Resumo</h2>
+        <p>Atualizado em: {{ currentTime }}</p>
+        <div id="overview-cards">
+            <div class="overview-card box">
+                <h3>Casos confirmados</h3>
+                <p>{{numberWithCommas(overview.casos)}}</p>
+            </div>
+            <div class="overview-card box">
+                <h3>Casos recuperados</h3>
+                <p>{{numberWithCommas(overview.recuperados)}}</p>
+            </div>
+            <div class="overview-card box">
+                <h3>Óbitos confirmados</h3>
+                <p>{{numberWithCommas(overview.mortes)}}</p>
+            </div>
         </div>
-        <div class="overview-card box">
-            <h3>Casos recuperados</h3>
-            <p>{{numberWithCommas(overview.recuperados)}}</p>
+    </section>
+    
+    <section id="states" class="mt-5 mb-5">
+        <h2>Estados</h2>
+        <div class="state-cards">
+            <div class="state-card box mt-4 mb-4" *ngFor="let state of states">
+                <h3 class="text-center">{{state.nome}}</h3>
+                <p>Casos confirmados: <span>{{numberWithCommas(state.casos)}}</span></p>
+                <p>Casos recuperados: <span>{{numberWithCommas(state.recuperados)}}</span></p>
+                <p>Óbitos confirmados: <span>{{numberWithCommas(state.mortes)}}</span></p>
+                <p>Gastos com a pandemia: <span>R${{numberWithCommas(state.dinheiro)}}</span></p>
+                <button routerLink="/brazil/state" [state]="{ estado: state }" class="btn align-self-end">Ver por cidade<img class="ml-2" src="assets/icons/next.svg"></button>
+            </div>
         </div>
-        <div class="overview-card box">
-            <h3>Óbitos confirmados</h3>
-            <p>{{numberWithCommas(overview.mortes)}}</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="states" class="mt-5 mb-5">
-    <h2>Estados</h2>
-    <div class="state-cards">
-        <div class="state-card box mt-4 mb-4" *ngFor="let state of states">
-            <h3 class="text-center">{{state.nome}}</h3>
-            <p>Casos confirmados: <span>{{numberWithCommas(state.casos)}}</span></p>
-            <p>Casos recuperados: <span>{{numberWithCommas(state.recuperados)}}</span></p>
-            <p>Óbitos confirmados: <span>{{numberWithCommas(state.mortes)}}</span></p>
-            <button routerLink="/brazil/state" [state]="{ estado: state }" class="btn align-self-end">Ver por cidade<img class="ml-2" src="assets/icons/next.svg"></button>
-        </div>
-    </div>
-</section>
+    <!-- Falta só a seção das informações interessantes -->
+    <!-- * Descubra as 5 cidades que gastaram mais e menos com a pandemia -->
+    <!-- * Descubra as 5 cidades que tiveram mais casos de COVID-19 -->
+
+    <!-- Falta ver a viabilidade de implementar uma caixa de busca -->
+</div>
+
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center flex-column" id="loading">
+    <h1>Carregando dados</h1>
+    <img src="assets/loading.gif" alt="">
+</div>
