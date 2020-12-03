@@ -4,7 +4,7 @@
         <h1>Dashboard - Brasil</h1>
     </div>
     <div id="right-side">
-        <button *ngIf="!currentUrl" (click)="return()" class="btn btn-inverted">Voltar</button>
+        <button *ngIf="!currentUrl" routerLink="/brazil" class="btn btn-inverted">Voltar para o início</button>
         <button routerLink="/world" class="btn">Ver os dados do mundo</button>
     </div>
 </header>
