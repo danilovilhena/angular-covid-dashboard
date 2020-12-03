@@ -27,7 +27,7 @@
                 <p>Casos confirmados: <span>{{numberWithCommas(state.casos)}}</span></p>
                 <p>Casos recuperados: <span>{{numberWithCommas(state.recuperados)}}</span></p>
                 <p>Óbitos confirmados: <span>{{numberWithCommas(state.mortes)}}</span></p>
-                <p>Gastos com a pandemia: <span>R${{numberWithCommas(state.dinheiro)}}</span></p>
+                <p>Gastos com a pandemia: <span>R${{numberWithCommas(state.dinheiro)}}*</span></p>
                 <button routerLink="/brazil/state" [state]="{ estado: state }" class="btn align-self-end">Ver por cidade<img class="ml-2" src="assets/icons/next.svg"></button>
             </div>
         </div>
@@ -36,15 +36,12 @@
     <section id="interesting" class="mt-5">
         <h2>Informações interessantes</h2>
         <div class="interesting-btns">
-            <button routerLink="/brazil/state" class="btn align-self-end mb-4">Descubra as 5 cidades que gastaram mais e menos com a pandemia<img class="ml-2" src="assets/icons/next.svg"></button>
-            <button routerLink="/brazil/state" class="btn align-self-end">Descubra as 5 cidades que tiveram mais casos de COVID-19<img class="ml-2" src="assets/icons/next.svg"></button>
+            <button routerLink="/brazil/top5" [state]="{ estados: states, opcao: 'gastosMax' }" class="btn align-self-end mb-4">Descubra as 10 cidades que gastaram mais com a pandemia<img class="ml-2" src="assets/icons/next.svg"></button>
+            <button routerLink="/brazil/top5" [state]="{ estados: states, opcao: 'gastosMin' }" class="btn align-self-end mb-4">Descubra as 10 cidades que gastaram menos com a pandemia<img class="ml-2" src="assets/icons/next.svg"></button>
+            <button routerLink="/brazil/top5" [state]="{ estados: states, opcao: 'casos' }" class="btn align-self-end mb-4">Descubra as 10 cidades que tiveram mais casos de COVID-19<img class="ml-2" src="assets/icons/next.svg"></button>
+            <button routerLink="/brazil/top5" [state]="{ estados: states, opcao: 'obitos' }" class="btn align-self-end">Descubra as 10 cidades que tiveram mais óbitos por COVID-19<img class="ml-2" src="assets/icons/next.svg"></button>
         </div>
     </section>
-    <!-- Falta só a seção das informações interessantes -->
-    <!-- * Descubra as 5 cidades que gastaram mais e menos com a pandemia -->
-    <!-- * Descubra as 5 cidades que tiveram mais casos de COVID-19 -->
-
-    <!-- Falta ver a viabilidade de implementar uma caixa de busca -->
 </div>
 
 <div *ngIf="loading" class="d-flex justify-content-center align-items-center flex-column" id="loading">
