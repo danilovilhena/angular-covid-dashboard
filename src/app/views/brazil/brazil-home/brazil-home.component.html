@@ -27,7 +27,7 @@
                 <p>Casos confirmados: <span>{{numberWithCommas(state.casos)}}</span></p>
                 <p>Casos recuperados: <span>{{numberWithCommas(state.recuperados)}}</span></p>
                 <p>Óbitos confirmados: <span>{{numberWithCommas(state.mortes)}}</span></p>
-                <p>Gastos com a pandemia: <span>R${{numberWithCommas(state.dinheiro)}}*</span></p>
+                <p>Gastos com a pandemia: <span>R${{numberWithCommas(state.dinheiro)}}</span></p>
                 <button routerLink="/brazil/state" [state]="{ estado: state }" class="btn align-self-end">Ver por cidade<img class="ml-2" src="assets/icons/next.svg"></button>
             </div>
         </div>
