@@ -45,14 +45,9 @@ export class BrazilTop5Component implements OnInit {
         this.cities.push(this.states[i].cidades[j])
       }
     }
-    this.cities.sort(function(a, b){return b['casos'] - a['casos']});
-    this.cities = this.cities.slice(0,10)
-
     // Sort by money spent
-    for(let i = 0; i < this.cities.length; i++){
-      this.cities[i].dinheiro = Math.floor(Math.random() * (2875535.32 - 2038257.24 + 1) + 203825.24)
-    }
     this.cities.sort(function(a, b){return b['dinheiro'] - a['dinheiro']});
+    this.cities = this.cities.slice(0,10)
   }
 
   findCitiesByMoneySpentMin(){
@@ -65,13 +60,10 @@ export class BrazilTop5Component implements OnInit {
         }
       }
     }
-    this.cities.sort(function(a, b){return a['casos'] - b['casos']});
-    this.cities = this.cities.slice(0,10)
+
     // Sort by money spent
-    for(let i = 0; i < this.cities.length; i++){
-      this.cities[i].dinheiro = Math.floor(Math.random() * (10755.32 - 5382.24 + 1) + 2382.24)
-    }
     this.cities.sort(function(a, b){return a['dinheiro'] - b['dinheiro']});
+    this.cities = this.cities.slice(0,10)
   }
   
   findCitiesByCases(){
@@ -102,6 +94,6 @@ export class BrazilTop5Component implements OnInit {
   }
 
   numberWithCommas(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return number.toLocaleString('pt')
   }
 }

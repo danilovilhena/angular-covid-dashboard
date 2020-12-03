@@ -31,7 +31,7 @@ export class BrazilHomeComponent implements OnInit {
   }
 
   numberWithCommas(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return number.toLocaleString('pt')
   }
 
   initStates(){
@@ -154,7 +154,7 @@ export class BrazilHomeComponent implements OnInit {
   }
 
   formatData() {
-    // Valores gasto com a pandemia fictícios
+    // Valores gastos com a pandemia fictícios
     let valores = []
     for(let i = 0; i < this.states.length; i++){
       valores.push(Math.floor(Math.random() * (2875535406.32 - 203825793.24 + 1) + 203825793.24))
@@ -163,13 +163,13 @@ export class BrazilHomeComponent implements OnInit {
 
     // Format states
     this.states.sort(function(a, b){return b['casos'] - a['casos']});
-
     // Format cities
     for(let i = 0; i < this.states.length; i++){
       this.states[i].cidades.sort(function(a, b){return b['casos'] - a['casos']});
       this.states[i].dinheiro = valores[i]
       for(let j = 0; j < this.states[i].cidades.length; j++){
         this.states[i].cidades[j].recuperados = parseInt((this.states[i].cidades[j].casos * 0.89).toString())
+        this.states[i].cidades[j].dinheiro = Math.floor(this.states[i].dinheiro * (this.states[i].cidades[j].casos / this.states[i].casos))
       }
     }
   }
