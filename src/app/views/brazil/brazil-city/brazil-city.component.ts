@@ -14,6 +14,6 @@ export class BrazilCityComponent implements OnInit {
 
   ngOnInit(): void {
     this.city = this.location.getState()
-    this.city = this.city.cidade.value
+    this.city = this.city.cidade
   }
 }
