@@ -1,31 +1,38 @@
 <app-header-world></app-header-world>
-<section id="overview" class="box mt-3">
-    <h2>Resumo</h2>
-    <p>Atualizado em: {{ currentTime }}</p>
-    <div id="overview-cards">
-        <div class="overview-card box">
-            <h3>Casos confirmados</h3>
-            <p>{{numberWithCommas(overview.casos)}}</p>
+<div *ngIf="!loading">
+    <section id="overview" class="box mt-3">
+        <h2>Resumo</h2>
+        <p>Atualizado em: {{ currentTime }}</p>
+        <div id="overview-cards">
+            <div class="overview-card box">
+                <h3>Casos confirmados</h3>
+                <p>{{numberWithCommas(overview.casos)}}</p>
+            </div>
+            <div class="overview-card box">
+                <h3>Casos recuperados</h3>
+                <p>{{numberWithCommas(overview.recuperados)}}</p>
+            </div>
+            <div class="overview-card box">
+                <h3>Óbitos confirmados</h3>
+                <p>{{numberWithCommas(overview.mortes)}}</p>
+            </div>
         </div>
-        <div class="overview-card box">
-            <h3>Casos recuperados</h3>
-            <p>{{numberWithCommas(overview.recuperados)}}</p>
-        </div>
-        <div class="overview-card box">
-            <h3>Óbitos confirmados</h3>
-            <p>{{numberWithCommas(overview.mortes)}}</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="countries" class="mt-5 mb-5">
-  <h2>Países</h2>
-  <div class="country-cards">
-      <div class="country-card box mt-4 mb-4" *ngFor="let country of countries | keyvalue">
-          <h3 class="text-center">{{country.value.nome}}</h3>
-          <p>Casos confirmados: <span>{{numberWithCommas(country.value.casos)}}</span></p>
-          <p>Casos recuperados: <span>{{numberWithCommas(country.value.recuperados)}}</span></p>
-          <p>Óbitos confirmados: <span>{{numberWithCommas(country.value.mortes)}}</span></p>
-          <button routerLink="/world/country" [state]="{ pais: country.value }" [disabled]="country.value.cidades.length === 0" class="btn align-self-end">Ver por cidade<img class="ml-2" src="assets/icons/next.svg"></button>
+    <section id="countries" class="mt-5 mb-5">
+      <h2>Países</h2>
+      <div class="country-cards">
+          <div class="country-card box mt-4 mb-4" *ngFor="let country of countries | keyvalue">
+              <h3 class="text-center">{{country.value.nome}}</h3>
+              <p>Casos confirmados: <span>{{numberWithCommas(country.value.casos)}}</span></p>
+              <p>Casos recuperados: <span>{{numberWithCommas(country.value.recuperados)}}</span></p>
+              <p>Óbitos confirmados: <span>{{numberWithCommas(country.value.mortes)}}</span></p>
+              <button routerLink="/world/country" [state]="{ pais: country.value }" *ngIf="country.value.cidades.length !== 0" class="btn align-self-end">Ver por província<img class="ml-2" src="assets/icons/next.svg"></button>
+          </div>
       </div>
-  </div>
+    </section>
+</div>
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center flex-column" id="loading">
+    <h1>Carregando dados</h1>
+    <img src="assets/loading.gif" alt="">
+</div>

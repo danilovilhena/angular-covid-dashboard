@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header-world',
@@ -9,14 +8,10 @@ import { Location } from '@angular/common';
 export class HeaderWorldComponent implements OnInit {
 
   currentUrl: boolean;
-  constructor(private location: Location) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.currentUrl = document.location.href.endsWith('world')
-  }
-
-  return() {
-    this.location.back();
   }
 
 }

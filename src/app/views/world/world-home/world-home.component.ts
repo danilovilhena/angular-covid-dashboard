@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class WorldHomeComponent implements OnInit {
 
+  loading = true;
   currentTime;
   countries = {};
   overview = {
@@ -22,8 +23,14 @@ export class WorldHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentTime = new Date().toLocaleString()
-    this.fetchCountries()
-    this.fetchCities()
+    if(!localStorage.getItem('world') && !localStorage.getItem('world_overview')){
+      this.fetchCountries()
+      this.fetchCities()
+    } else{
+      this.countries = JSON.parse(localStorage.getItem('world'))
+      this.overview = JSON.parse(localStorage.getItem('world_overview'))
+      this.loading = false
+    }
   }
 
   numberWithCommas(number) {
@@ -51,7 +58,7 @@ export class WorldHomeComponent implements OnInit {
         for (const key in countriesStack) {
           this.countries[key] = {}
           this.countries[key].nome = countriesStack[key].name
-          this.countries[key].iso =  countriesStack[key].iso3166a3
+          this.countries[key].iso =  countriesStack[key].iso3166a2.toLowerCase()
           this.countries[key].casos =  countriesStack[key].total_cases
           this.countries[key].recuperados =  countriesStack[key].recovered
           this.countries[key].mortes =  countriesStack[key].deaths
@@ -94,8 +101,14 @@ export class WorldHomeComponent implements OnInit {
               'nome': row.region.province,
               'casos': +row.confirmed,
               'recuperados': +row.recovered,
-              'mortes': +row.deaths
+              'mortes': +row.deaths,
+              'ativos': +row.active,
+              'casos_dif': +row.confirmed_diff,
+              'recuperados_dif': +row.recovered_diff,
+              'ativos_dif': +row.active_diff,
+              'mortes_dif': +row.deaths_diff
             }
+
             try {
               this.countries[key].cidades.push(object)
             } catch (error) {
@@ -104,12 +117,22 @@ export class WorldHomeComponent implements OnInit {
 
           }
         });
-        console.log(this.countries)
+
       })
       .catch(err => {
-        console.error(err);
+        console.error(err)
+      })
+      .then(() => {
+        this.stopLoading()
       });
   }
 
+  stopLoading(){
+    setTimeout(() => {
+      localStorage.setItem('world', JSON.stringify(this.countries))
+      localStorage.setItem('world_overview', JSON.stringify(this.overview))
+      this.loading = false;
+    }, 3000);
+  }
 
 }
