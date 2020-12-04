@@ -9,16 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class BrazilStatesComponent implements OnInit {
 
   state;
+  cities;
 
   constructor(private location: Location) {}
 
   ngOnInit(): void {
     this.state = this.location.getState()
     this.state = this.state.estado
+    this.cities = this.state.cidades
   }
 
   numberWithCommas(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return number.toLocaleString('pt')
   }
 
 }

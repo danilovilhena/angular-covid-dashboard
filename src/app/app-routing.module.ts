@@ -7,6 +7,7 @@ import { BrazilStatesComponent } from './views/brazil/brazil-states/brazil-state
 import { WorldCountriesComponent } from './views/world/world-countries/world-countries.component';
 import { BrazilCityComponent } from './views/brazil/brazil-city/brazil-city.component';
 import { WorldCityComponent } from './views/world/world-city/world-city.component';
+import { BrazilTop5Component } from './views/brazil/brazil-top5/brazil-top5.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: "brazil/state", component: BrazilStatesComponent },
   { path: "world/country", component: WorldCountriesComponent },
   { path: "brazil/state/city", component: BrazilCityComponent },
-  { path: "world/country/city", component: WorldCityComponent }
+  { path: "world/country/city", component: WorldCityComponent },
+  { path: "brazil/top5", component: BrazilTop5Component }
 ];
 
 @NgModule({

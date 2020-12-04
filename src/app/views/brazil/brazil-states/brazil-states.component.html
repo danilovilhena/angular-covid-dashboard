@@ -6,11 +6,13 @@
     </div>
 
     <div class="state-cards">
-        <div class="state-card box mt-4 mb-4 mr-5" *ngFor="let cidade of state.cidades | keyvalue">
-            <h3 class="text-center mb-3">{{numberWithCommas(cidade.value.nome)}}</h3>
-            <p>Casos confirmados: <span>{{numberWithCommas(cidade.value.casos)}}</span></p>
-            <p class="mb-3">Óbitos confirmados: <span>{{numberWithCommas(cidade.value.mortes)}}</span></p>
-            <button routerLink="/brazil/state/city" [state]="{ cidade: cidade }" class="btn align-self-end">Ver mais detalhes<img class="ml-2" src="assets/icons/next.svg"></button>
+        <div class="state-card box mt-4 mb-4 mr-5" *ngFor="let city of cities">
+            <h3 class="text-center mb-3">{{numberWithCommas(city.nome)}}</h3>
+            <p>Casos confirmados: <span>{{numberWithCommas(city.casos)}}</span></p>
+            <p>Casos recuperados: <span>{{numberWithCommas(city.recuperados)}}</span></p>
+            <p>Óbitos confirmados: <span>{{numberWithCommas(city.mortes)}}</span></p>
+            <p class="mb-3">Dinheiro gasto: <span>R${{numberWithCommas(city.dinheiro)}}</span></p>
+            <button routerLink="/brazil/state/city" [state]="{ cidade: city }" class="btn align-self-end">Ver mais detalhes<img class="ml-2" src="assets/icons/next.svg"></button>
         </div>
     </div>
 </section>
