@@ -1,12 +1,16 @@
 <app-header-world></app-header-world>
 <section class="mt-5 mb-5">
-    <h2>Cidades/Províncias - {{state.nome}}</h2>
+    <div class="d-flex flex-row align-items-center">
+      <h2 class="mr-3 mb-0">Estados/Províncias - {{state.nome}}</h2>
+      <img src="//static.dwcdn.net/css/flag-icons/flags/4x3/{{state.iso}}.svg" alt="Bandeira do país {{state.nome}}" width="45" height="30">
+    </div>
+
     <div class="country-cards">
         <div class="country-card box mt-4 mb-4 mr-5" *ngFor="let cidade of state.cidades">
             <h3 class="text-center mb-3">{{numberWithCommas(cidade.nome)}}</h3>
             <p>Casos confirmados: <span>{{numberWithCommas(cidade.casos)}}</span></p>
             <p class="mb-3">Óbitos confirmados: <span>{{numberWithCommas(cidade.mortes)}}</span></p>
-            <button routerLink="/world/country" [state]="{ cidade: cidade}" class="btn align-self-end">Ver mais detalhes<img class="ml-2" src="assets/icons/next.svg"></button>
+            <button routerLink="/world/country/city" [state]="{ cidade: cidade }" class="btn align-self-end">Ver mais detalhes<img class="ml-2" src="assets/icons/next.svg"></button>
         </div>
     </div>
 </section>

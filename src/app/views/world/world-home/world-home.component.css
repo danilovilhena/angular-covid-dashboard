@@ -113,3 +113,44 @@ button{
 .btn.focus, .btn:focus{
   box-shadow: 0 0 0 0.2rem rgba(222,60,75,.5);
 }
+
+#loading{
+  height: 80vh;
+}
+#loading h1{
+  font-size: 2.75rem;
+  font-weight: bold;
+  color: #0D3B66;
+}
+
+#interesting{
+  margin-bottom: 5rem;
+}
+
+.interesting-btns{
+  margin-left: 1.75%;
+}
+
+.interesting-btns button{
+  width: 100%;
+  background-color: #DE3C4B;
+  border-color: #DE3C4B;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+}
+
+.interesting-btns button:hover, .interesting-btns button:active, .interesting-btns button:focus, .interesting-btns button-primary:not(:disabled):not(.disabled):active{
+  background-color: #F39237;
+  border-color: #F39237;
+  color: white;
+}
+
+.interesting-btns button.focus, .interesting-btns button:focus{
+  box-shadow: 0 0 0 0.2rem rgba(243, 146, 55,.5);
+}
+
+.interesting-btns img{
+  align-self: baseline;
+}

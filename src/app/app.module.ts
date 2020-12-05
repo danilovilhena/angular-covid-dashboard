@@ -12,7 +12,9 @@ import { WorldHomeComponent } from './views/world/world-home/world-home.componen
 import { BrazilStatesComponent } from './views/brazil/brazil-states/brazil-states.component';
 import { WorldCountriesComponent } from './views/world/world-countries/world-countries.component';
 import { BrazilCityComponent } from './views/brazil/brazil-city/brazil-city.component';
+import { WorldCityComponent } from './views/world/world-city/world-city.component';
 import { BrazilTop5Component } from './views/brazil/brazil-top5/brazil-top5.component';
+import { WorldTop5Component } from './views/world/world-top5/world-top5.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { BrazilTop5Component } from './views/brazil/brazil-top5/brazil-top5.comp
     WorldCountriesComponent,
     BrazilStatesComponent,
     BrazilCityComponent,
-    BrazilTop5Component
+    WorldCityComponent,
+    BrazilTop5Component,
+    WorldTop5Component
   ],
   imports: [
     BrowserModule,

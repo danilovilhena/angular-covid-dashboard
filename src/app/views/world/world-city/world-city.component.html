@@ -1,0 +1,43 @@
+<app-header-world></app-header-world>
+
+<section id="overview" class="box mt-3">
+    <h2 class="mb-4">{{city.nome}}</h2>
+    <div class="d-flex justify-content-between flex-sm-column flex-lg-row">
+        <div id="left-div">
+            <div>
+                <h3>Casos confirmados:</h3>
+                <p>{{numberWithCommas(city.casos)}}</p>
+            </div>
+            <div>
+                <h3>Casos recuperados:</h3>
+                <p>{{city.recuperados > 0 ? numberWithCommas(city.recuperados): "Dados não disponíveis"}}</p>
+            </div>
+            <div>
+                <h3>Casos ativos:</h3>
+                <p>{{numberWithCommas(city.ativos)}}</p>
+            </div>
+            <div>
+                <h3>Óbitos confirmados:</h3>
+                <p>{{city.mortes > 0 ? numberWithCommas(city.mortes): "Dados não disponíveis"}}</p>
+            </div>
+        </div>
+        <div id="right-div">
+            <div>
+                <h3>Número de casos confirmados nas últimas 24 horas: </h3>
+                <p>{{ city.casos_dif > 0 ? numberWithCommas(city.casos_dif) : "Nenhum caso registrado" }}</p>
+            </div>
+            <div>
+                <h3>Número de casos recuperados nas últimas 24 horas: </h3>
+                <p>{{ city.recuperados_dif > 0 ? numberWithCommas(city.recuperados_dif) : "Nenhum caso registrado" }}</p>
+            </div>
+            <div>
+                <h3>Número de casos ativos nas últimas 24 horas: </h3>
+                <p>{{ city.ativos_dif > 0 ? numberWithCommas(city.ativos_dif) : "Nenhum caso registrado" }}</p>
+            </div>
+            <div>
+                <h3>Número de óbitos confirmados nas últimas 24 horas: </h3>
+                <p>{{ city.mortes_dif > 0 ? numberWithCommas(city.mortes_dif) : "Nenhum óbito registrado" }}</p>
+            </div>
+        </div>
+    </div>
+</section>
