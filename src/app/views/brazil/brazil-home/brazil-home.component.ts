@@ -49,7 +49,7 @@ export class BrazilHomeComponent implements OnInit {
   fetchData() {
     // Fetching Brazil and States
     fetch('https://raw.githubusercontent.com/wcota/covid19br/master/cases-brazil-total.csv')
-      .then(response => response.text()) 
+      .then(response => response.text())
       .then(textString => {
         let rows = textString.split('\n')
         rows.shift()
@@ -70,11 +70,11 @@ export class BrazilHomeComponent implements OnInit {
           this.states.find(obj => {return obj.sigla === state})['mortes'] = +current[5]
           this.states.find(obj => {return obj.sigla === state})['recuperados'] = +current[11]
         });
-      });
+      }).then(() =>{
 
     // Fetching Cities
     fetch('https://raw.githubusercontent.com/wcota/covid19br/master/cases-brazil-cities.csv')
-      .then(response => response.text()) 
+      .then(response => response.text())
       .then(textString => {
         let rows = textString.split('\n')
         rows.shift()
@@ -91,11 +91,12 @@ export class BrazilHomeComponent implements OnInit {
           }
           this.states.find(obj => {return obj.sigla === state}).cidades.push(object)
         });
-      });
+      })
+    }).then(() =>{
 
     //Fetching Cities (Semanas)
     fetch('https://raw.githubusercontent.com/wcota/covid19br/master/cases-brazil-cities-time.csv')
-      .then(response => response.text()) 
+      .then(response => response.text())
       .then(textString => {
         let rows = textString.split('\n')
         rows.shift()
@@ -118,11 +119,12 @@ export class BrazilHomeComponent implements OnInit {
           } catch (error) { }
         });
 
-      });
+      })
+    }).then(() =>{
 
     // Fetching Cities (Ocupação de leitos)
     fetch('https://raw.githubusercontent.com/marcuswac/covid-br-data/master/esus-notifica/ocupacao_leitos_esus.csv')
-      .then(response => response.text()) 
+      .then(response => response.text())
       .then(textString => {
         let rows = textString.split('\n')
         rows.shift()
@@ -147,10 +149,11 @@ export class BrazilHomeComponent implements OnInit {
           } catch (error) {}
         });
       })
-      
+    }).then(() => {
+
     // Fetching Cities (Faturamento)
     fetch('assets/data/dinheiro.csv')
-      .then(response => response.text()) 
+      .then(response => response.text())
       .then(textString => {
         let rows = textString.split('\n')
         rows.shift()
@@ -164,8 +167,9 @@ export class BrazilHomeComponent implements OnInit {
       .then(() => {
         this.stopLoading()
         console.log(this.states)
-      });
-    
+      })
+    });
+
   }
 
   formatData() {
