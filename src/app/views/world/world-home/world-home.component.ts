@@ -1,4 +1,3 @@
-import { INT_TYPE } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -62,6 +61,8 @@ export class WorldHomeComponent implements OnInit {
           this.countries[key].casos =  countriesStack[key].total_cases
           this.countries[key].recuperados =  countriesStack[key].recovered
           this.countries[key].mortes =  countriesStack[key].deaths
+          this.countries[key].taxa_morte =  countriesStack[key].death_ratio
+          this.countries[key].casos_dif =  countriesStack[key].change.total_cases
           this.countries[key].cidades = []
         }
 
@@ -109,12 +110,7 @@ export class WorldHomeComponent implements OnInit {
               'mortes_dif': +row.deaths_diff
             }
 
-            try {
-              this.countries[key].cidades.push(object)
-            } catch (error) {
-              console.log(error)
-            }
-
+            this.countries[key].cidades.push(object)
           }
         });
 

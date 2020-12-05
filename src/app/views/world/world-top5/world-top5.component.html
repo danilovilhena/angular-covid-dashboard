@@ -1,0 +1,39 @@
+<app-header-world></app-header-world>
+<section class="mt-5 mb-5">
+    <h2 class="mr-3 mb-0">Top 10 Estados/Províncias - {{title}}</h2>
+
+    <div class="state-cards">
+        <div class="state-card box mt-4 mb-4 mr-5" *ngFor="let country of countriesSelect; let i = index">
+            <div class="d-flex flex-row">
+                <h3 class="mb-3 mr-2">{{i+1}}) {{country.nome}}</h3>
+                <img *ngIf="country.iso != ''" src="//static.dwcdn.net/css/flag-icons/flags/4x3/{{country.iso}}.svg" alt="Bandeira do pais {{country.nome}}" width="45" height="30">
+            </div>
+            <div class="d-flex flex-row" *ngIf="option == 'casos' || option == 'obitos'">
+                <p class="mr-2">Casos confirmados: <span>{{numberWithCommas(country.casos)}}</span></p>
+                <p class="mr-2">|</p>
+                <p class="mr-2">Casos recuperados: <span>{{numberWithCommas(country.recuperados)}}</span></p>
+                <p class="mr-2">|</p>
+                <p class="mb-3"> Óbitos confirmados: <span>{{numberWithCommas(country.mortes)}}</span></p>
+            </div>
+            <div class="d-flex flex-row" *ngIf="option == 'casos24hr'">
+                <p class="mr-2">Casos confirmados nas últimas 24 horas: <span>{{numberWithCommas(country.casos_dif)}}</span></p>
+                <p class="mr-2">|</p>
+                <p class="mr-2">Casos confirmados: <span>{{numberWithCommas(country.casos)}}</span></p>
+                <p class="mr-2">|</p>
+                <p class="mr-2">Casos recuperados: <span>{{numberWithCommas(country.recuperados)}}</span></p>
+                <p class="mr-2">|</p>
+                <p class="mb-3"> Óbitos confirmados: <span>{{numberWithCommas(country.mortes)}}</span></p>
+            </div>
+            <div class="d-flex flex-row" *ngIf="option == 'taxaMorte'">
+                <p class="mr-2">Taxa de Mortalidade: <span>{{numberWithCommas(country.taxa_morte)}}</span></p>
+                <p class="mr-2">|</p>
+                <p class="mr-2">Casos confirmados: <span>{{numberWithCommas(country.casos)}}</span></p>
+                <p class="mr-2">|</p>
+                <p class="mr-2">Casos recuperados: <span>{{numberWithCommas(country.recuperados)}}</span></p>
+                <p class="mr-2">|</p>
+                <p class="mb-3"> Óbitos confirmados: <span>{{numberWithCommas(country.mortes)}}</span></p>
+            </div>
+
+        </div>
+    </div>
+</section>

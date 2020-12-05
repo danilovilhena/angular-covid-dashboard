@@ -31,6 +31,16 @@
           </div>
       </div>
     </section>
+
+    <section id="interesting" class="mt-5">
+      <h2 style="margin-left: 1.75%">Informações interessantes</h2>
+      <div class="interesting-btns">
+          <button routerLink="/world/top5" [state]="{ paises: countries, opcao: 'casos' }" class="btn align-self-end mb-4">Descubra os 10 países que tiveram mais casos de COVID-19<img class="ml-2" src="assets/icons/next.svg"></button>
+          <button routerLink="/world/top5" [state]="{ paises: countries, opcao: 'obitos' }" class="btn align-self-end mb-4">Descubra os 10 países que tiveram mais óbitos por COVID-19<img class="ml-2" src="assets/icons/next.svg"></button>
+          <button routerLink="/world/top5" [state]="{ paises: countries, opcao: 'casos24hr' }" class="btn align-self-end mb-4">Descubra os 10 países que tiveram mais aumento de casos de COVID-19 nas últimas 24 horas<img class="ml-2" src="assets/icons/next.svg"></button>
+          <button routerLink="/world/top5" [state]="{ paises: countries, opcao: 'taxaMorte' }" class="btn align-self-end">Descubra os 10 países que tem maior taxa de mortalidade de COVID-19<img class="ml-2" src="assets/icons/next.svg"></button>
+      </div>
+  </section>
 </div>
 <div *ngIf="loading" class="d-flex justify-content-center align-items-center flex-column" id="loading">
     <h1>Carregando dados</h1>

@@ -14,6 +14,7 @@ import { WorldCountriesComponent } from './views/world/world-countries/world-cou
 import { BrazilCityComponent } from './views/brazil/brazil-city/brazil-city.component';
 import { WorldCityComponent } from './views/world/world-city/world-city.component';
 import { BrazilTop5Component } from './views/brazil/brazil-top5/brazil-top5.component';
+import { WorldTop5Component } from './views/world/world-top5/world-top5.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BrazilTop5Component } from './views/brazil/brazil-top5/brazil-top5.comp
     BrazilStatesComponent,
     BrazilCityComponent,
     WorldCityComponent,
-    BrazilTop5Component
+    BrazilTop5Component,
+    WorldTop5Component
   ],
   imports: [
     BrowserModule,
